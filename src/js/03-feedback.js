@@ -17,18 +17,19 @@ function saveMessage(e) {
 } 
 function submitForm(e){
     e.preventDefault();
-    console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)))
+    console.log(formData)
     refs.email.value = null;
     refs.message.value = null;
     localStorage.removeItem(STORAGE_KEY);
+    
 }
 refs.form.addEventListener('submit', submitForm);
 
     if(localStorage.getItem(STORAGE_KEY) !== null)
     try {
-        const valueForm = JSON.parse(localStorage.getItem(STORAGE_KEY));
-        refs.email.value = valueForm.email || "";
-        refs.message.value = valueForm.message || "";
+        
+        refs.email.value = formData.email || "";
+        refs.message.value = formData.message || "";
     } catch (error) {
         console.log(error.name); 
         console.log(error.message);
